@@ -1,3 +1,4 @@
+require 'pry'
 require 'sqlite3'
 require 'singleton'
 
@@ -22,7 +23,7 @@ class Play
   def self.find_by_title(title)
     PlayDBConnection.instance.execute(<<-SQL, title)
       SELECT
-        title
+        *
       FROM
         plays
       WHERE
@@ -33,7 +34,7 @@ class Play
   def self.find_by_playwright(name)
     PlayDBConnection.instance.execute(<<-SQL, name)
       SELECT
-        title
+        *
       FROM
         plays
       JOIN playwrights
@@ -85,7 +86,7 @@ class Playwright
   def self.find_by_name(name)
     PlayDBConnection.instance.execute(<<-SQL, name)
       SELECT
-        name
+        *
       FROM
         playwrights
       WHERE
@@ -124,13 +125,15 @@ class Playwright
 
   # returns all plays written by playwright
   def get_plays
-    PlayDBConnection.instance.execute(<<-SQL)
+    PlayDBConnection.instance.execute(<<-SQL, @name)
       SELECT
         title, playwrights.name
       FROM
-        movies
+        plays
       JOIN playwrights
-        ON movies.playwright_id = playwrights.id
+        ON plays.playwright_id = playwrights.id
+      WHERE
+        playwrights.name = ?
     SQL
   end
 end
