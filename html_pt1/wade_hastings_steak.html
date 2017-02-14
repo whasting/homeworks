@@ -47,6 +47,36 @@
           <li>NOTE: Using this method, I recommend placing the steak 6 inches away from the heating element. If this is your first time broiling, sit and watch the steak cook! Flareups can and will ruin your steak! It will also smoke you out and not in a good way!</li>
         </ol>
     </section>
+    <section>
+      <br>
+      <h2>What did you think?</h2>
+      <form action="/reviews" method="post">
+        <label for="username">Name</label>
+        <input id="username" type="text" name="username" value="">
+        <br>
+        <label for="rating">Rating</label>
+        5<input id="rating" type="radio" name="5" value="5">
+        4<input id="rating" type="radio" name="4" value="4">
+        3<input id="rating" type="radio" name="3" value="3">
+        2<input id="rating" type="radio" name="2" value="2">
+        1<input id="rating" type="radio" name="1" value="1" checked>
+        <br>
+        <label for="expertise">Cooking Expertise</label>
+        <select name="expertise">
+          <option disabled selected>Select Cooking Expertise</option>
+          <option value="sometimes">Sometimes Cook</option>
+          <option value="everyday">Cook Everyday</option>
+          <option value="hobby">Cooking is a Hobby</option>
+          <option value="professional">Professional Chef</option>
+        </select>
+        <br>
+        <br>
+        <label>Review
+          <textarea name="review" rows="3" cols="30"></textarea>
+        </label>
+        <br>
+      </form>
+    </section>
     <a href="#top-of-page">Back to the top!</a>
     <footer><p>Recipe originated from <a href="http://www.omahasteaks.com/servlet/OnlineShopping?Dsp=32&FID=recipe_cookchart">the omaha steak cooking chart</a> and my momma!</p></footer>
   </body>
